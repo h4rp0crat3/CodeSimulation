@@ -1,3 +1,9 @@
+package engine;
+
+import java.util.ArrayList;
+import java.util.List;
+import world.World;
+
 public class SimulationEngine {
 
     private final World world;

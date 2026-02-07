@@ -1,3 +1,7 @@
+package map;
+
+import util.Vector2i;
+
 public class Tile {
 
     private final Vector2i position;

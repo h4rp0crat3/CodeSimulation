@@ -1,3 +1,11 @@
+package world;
+
+import java.util.ArrayList;
+import java.util.List;
+import map.GridMap;
+import map.Tile;
+import util.Vector2i;
+
 public class World {
 
     private final GridMap map;

@@ -1,5 +1,0 @@
-public class Agent implements Tickable {
-
-    @Override
-    public void tick(World world) {}
-}

@@ -1,3 +1,9 @@
+package map;
+
+import java.util.ArrayList;
+import java.util.List;
+import util.Vector2i;
+
 public class GridMap {
 
     private final Tile[][] tiles;
