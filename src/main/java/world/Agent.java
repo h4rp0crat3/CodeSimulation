@@ -15,20 +15,26 @@ public class Agent implements Tickable {
 
     @Override
     public void tick(World world) {
-        int nexdx = 0;
-        int nexdy = 0;
         int dx = 0;
         int dy = 0;
 
-        if (Math.random() < 0.33) nexdx = 1;
-        else if (Math.random() < 0.66) nexdx = -1;
+        // 1. Choisir une direction au hasard
+        if (Math.random() < 0.33) dx = 1;
+        else if (Math.random() < 0.66) dx = -1;
 
-        if (Math.random() < 0.33) nexdy = 1;
-        else if (Math.random() < 0.66) nexdy = -1;
-        if (nextdx >= 0 && nextdx <= this.getWidth()) nextdx = dx;
-        if (nextdx >= 0 && nextdx <= this.getWidth()) nextdy = dy;
-        this.posX += dx;
-        this.posY += dy;
+        if (Math.random() < 0.33) dy = 1;
+        else if (Math.random() < 0.66) dy = -1;
+
+        int futureX = this.posX + dx;
+        int futureY = this.posY + dy;
+
+        if (futureX >= 0 && futureX < world.getWidth()) {
+            this.posX = futureX;
+        }
+
+        if (futureY >= 0 && futureY < world.getHeight()) {
+            this.posY = futureY;
+        }
     }
 
     public void move(int x, int y) {

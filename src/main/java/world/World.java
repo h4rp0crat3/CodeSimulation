@@ -25,7 +25,6 @@ public class World {
 
     public void tick() {
         for (Agent agent : agents) {
-            // CORRECTION ICI : On passe "this" (le monde actuel) à l'agent
             agent.tick(this);
         }
     }
