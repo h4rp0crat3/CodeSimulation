@@ -1,38 +1,23 @@
 package engine;
 
-import java.util.ArrayList;
-import java.util.List;
 import world.World;
+import world.WorldConfig;
 
 public class SimulationEngine {
 
-    private final World world;
-    private final List<Tickable> tickables;
-    private boolean running;
+    private World world;
 
-    public SimulationEngine(World world) {
-        this.world = world;
-        this.tickables = new ArrayList<>();
-        this.running = false;
+    public SimulationEngine(WorldConfig config) {
+        // On initialise le monde avec la config
+        this.world = new World(config);
     }
 
-    public void addTickable(Tickable tickable) {
-        this.tickables.add(tickable);
+    // Cette méthode est appelée 60 fois par seconde par l'interface graphique
+    public void update() {
+        world.tick();
     }
 
-    public void start() {
-        this.running = true;
-    }
-
-    public void pause() {
-        this.running = false;
-    }
-
-    public void tick() {
-        if (!running) return;
-
-        for (Tickable t : tickables) {
-            t.tick(world);
-        }
+    public World getWorld() {
+        return world;
     }
 }

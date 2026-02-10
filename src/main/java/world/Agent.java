@@ -5,30 +5,30 @@ import util.Vector2i;
 
 public class Agent implements Tickable {
 
-    int posX;
-    int posY;
-
-    @Override
-    public void tick(World world) {
-        // 1. On génère un déplacement aléatoire sur X (-1, 0, ou 1)
-        // Math.random() donne un chiffre entre 0.0 et 0.99
-        // * 3 -> entre 0.0 et 2.99
-        // (int) -> 0, 1 ou 2
-        // - 1 -> -1, 0 ou 1
-        int dx = (int) (Math.random() * 3) - 1;
-
-        // 2. Pareil pour Y
-        int dy = (int) (Math.random() * 3) - 1;
-
-        // 3. Si le mouvement n'est pas nul (0,0), on bouge
-        if (dx != 0 || dy != 0) {
-            move(this.posX + dx, this.posY + dy);
-        }
-    }
+    private int posX;
+    private int posY;
 
     public Agent(Vector2i pos) {
         this.posX = pos.x();
         this.posY = pos.y();
+    }
+
+    @Override
+    public void tick(World world) {
+        int nexdx = 0;
+        int nexdy = 0;
+        int dx = 0;
+        int dy = 0;
+
+        if (Math.random() < 0.33) nexdx = 1;
+        else if (Math.random() < 0.66) nexdx = -1;
+
+        if (Math.random() < 0.33) nexdy = 1;
+        else if (Math.random() < 0.66) nexdy = -1;
+        if (nextdx >= 0 && nextdx <= this.getWidth()) nextdx = dx;
+        if (nextdx >= 0 && nextdx <= this.getWidth()) nextdy = dy;
+        this.posX += dx;
+        this.posY += dy;
     }
 
     public void move(int x, int y) {
@@ -37,7 +37,6 @@ public class Agent implements Tickable {
     }
 
     public Vector2i getPosition() {
-        Vector2i vecteur = new Vector2i(this.posX, this.posY);
-        return vecteur;
+        return new Vector2i(this.posX, this.posY);
     }
 }
