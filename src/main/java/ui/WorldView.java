@@ -35,9 +35,12 @@ public class WorldView extends Canvas {
         // On calcule la position en pixels (Position Grille * Taille Case)
         double x = agent.getPosition().x * tileSize;
         double y = agent.getPosition().y * tileSize;
+        int vitesse = agent.getVitesse();
 
         // On dessine un rond
-        gc.setFill(Color.BLUE); // Couleur provisoire
+        if (vitesse >= 50) gc.setFill(Color.RED);
+        // Couleur provisoire
+        else if (vitesse < 50) gc.setFill(Color.BLUE);
         gc.fillOval(x, y, tileSize, tileSize);
     }
 }
